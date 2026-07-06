@@ -37,6 +37,7 @@ authRouter.post('/login', (request: Request, response: Response) => {
         .send({
             message: 'Login successful',
             data: {
+                token: user.id,
                 user,
             },
         });

@@ -2,7 +2,7 @@ import express, { Application } from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { mergeResolvers, mergeTypeDefs } from '@graphql-tools/merge';
 import { festivalResolvers, festivalTypeDefs } from './festival/index';
-import { authRouter } from './auth/index';
+import { authRouter, buildAuthContext } from './auth/index';
 import { Server } from 'http';
 
 let app: Application, server: Server;
@@ -12,7 +12,8 @@ const startServer = async () => {
 
     const apolloServer = new ApolloServer({
         typeDefs: mergeTypeDefs([festivalTypeDefs]),
-        resolvers: mergeResolvers([festivalResolvers])
+        resolvers: mergeResolvers([festivalResolvers]),
+        context: buildAuthContext,
     });
 
     await apolloServer.start();

@@ -11,4 +11,6 @@ module.exports = {
         '^.+\\.ts$': 'ts-jest',
     },
     testMatch: ['**/*.test.ts'],
+    // Run tests serially to avoid port conflicts between test suites
+    runInBand: true,
 };
