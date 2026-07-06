@@ -32,13 +32,15 @@ authRouter.post('/login', (request: Request, response: Response) => {
             });
     }
 
+    const { password: _password, ...safeUser } = user;
+
     return response
         .status(200)
         .send({
             message: 'Login successful',
             data: {
                 token: user.id,
-                user,
+                user: safeUser,
             },
         });
 });

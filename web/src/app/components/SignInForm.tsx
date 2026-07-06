@@ -33,6 +33,11 @@ export const SignInForm = (): ReactElement => {
             const token: string = responseData?.data?.token;
             if (token) {
                 localStorage.setItem('auth_token', token);
+                const stored = localStorage.getItem('auth_token');
+                if (!stored) {
+                    setError('Failed to save session. Please check your browser settings (localStorage may be disabled).');
+                    return;
+                }
             }
 
             router.push('/');

@@ -10,6 +10,8 @@ let app: Application, server: Server;
 const startServer = async () => {
     app = express();
 
+    app.use(express.json());
+
     const apolloServer = new ApolloServer({
         typeDefs: mergeTypeDefs([festivalTypeDefs]),
         resolvers: mergeResolvers([festivalResolvers]),
@@ -19,7 +21,6 @@ const startServer = async () => {
     await apolloServer.start();
     apolloServer.applyMiddleware({ app });
 
-    app.use(express.json());
     app.use('/auth', authRouter);
 
     server = app.listen({ port: 4000 }, () => {

@@ -1,9 +1,8 @@
 import { UserData } from './types';
-import { randomUUID } from 'node:crypto';
 
 export const USERS: UserData[] = [
     {
-        id: randomUUID(),
+        id: 'a3bb189e-8bf9-3888-9912-ace4e6543002',
         name: 'John',
         email: 'test@example.com',
         password: 'my_secret_password'
