@@ -35,11 +35,13 @@ export const SignInForm = (): ReactElement => {
                 localStorage.setItem('auth_token', token);
                 const stored = localStorage.getItem('auth_token');
                 if (!stored) {
-                    setError('Failed to save session. Please check your browser settings (localStorage may be disabled).');
+                    setError('Failed to save session. Please check your browser settings.');
                     return;
                 }
+            } else {
+                setError('Login failed: no token received. Please try again.');
+                return;
             }
-
             router.push('/');
         } catch {
             setError('An unexpected error occurred. Please try again.');
