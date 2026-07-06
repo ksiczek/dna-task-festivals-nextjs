@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "tsc && node dist/index.js",
-    "test": "jest"
+    "test": "jest --runInBand"
   },
   "keywords": [],
   "author": "",
